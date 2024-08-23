@@ -1,0 +1,4 @@
+dotnet tool install --global dotnet-ef
+dotnet ef dbcontext scaffold "Server=DESKTOP-7H4B19K\\SQLEXPRESS;Database=FirstAsp;Trusted_Connection=false;MultipleActiveResultSets=True;Encrypt=false;" Microsoft.EntityFrameworkCore.SqlServer -o Data
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet ef dbcontext scaffold "Server=DESKTOP-7H4B19K\SQLEXPRESS;Database=FirstAsp;User Id=ali;Password=12345678;Trusted_Connection=false;MultipleActiveResultSets=True;Encrypt=false;" Microsoft.EntityFrameworkCore.SqlServer -o Data
