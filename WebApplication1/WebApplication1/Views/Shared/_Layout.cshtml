@@ -25,11 +25,9 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About</a>
                         </li>
+                        @if(User.Identity.IsAuthenticated){
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Courses" asp-action="Index">Courses</a>
                         </li>
@@ -38,8 +36,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Lectures" asp-action="Index">Lectures</a>
-                        </li>
+                        </li>}
                     </ul>
+                    <partial name="_loginPartial"/>
                 </div>
             </div>
         </nav>
