@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Lectures</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -33,9 +33,44 @@
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a class="btn btn-danger deleteBtn" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <button data-id="@item.Id" class="btn btn-danger deleteBtn" type="button">Delete</button>
             </td>
         </tr>
 }
     </tbody>
 </table>
+<form asp-action="Delete" id="lectureDeteleForm">
+        <input type="hidden" id="lectureid" name="Id" />
+        
+    </form>
+@section Scripts {
+    <script>
+        $(function(){
+            $('.deleteBtn').click(function(e){
+                Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
+                    }
+                    var btn = $(this);
+                    var id = btn.data("id");
+                    $('#lectureid').val(id);
+                    $('#lectureDeteleForm').submit();
+                    );
+                }
+                });
+            })
+        })
+    </script>
+}
